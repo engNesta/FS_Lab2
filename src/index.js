@@ -1,13 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-function App() {
-  return (
-    <div>
-      <h1>React App, Welcome GUY</h1>
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('index'));
-
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(<App />);
