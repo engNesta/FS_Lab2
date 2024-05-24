@@ -20,6 +20,12 @@ function ProjectAssignments() {
         };
 
         fetchAssignments();
+
+        
+        const interval = setInterval(fetchAssignments, 5000);
+
+        
+        return () => clearInterval(interval);
     }, []);
 
     if (error) return <p>Error loading data: {error}</p>;
@@ -38,7 +44,7 @@ function ProjectAssignments() {
                     </tr>
                 </thead>
                 <tbody>
-                    {assignments.map((assignment, index) => (
+                    {assignments.slice(0, 5).map((assignment, index) => (
                         <tr key={index}>
                             <td>{assignment.employee_id ? assignment.employee_id.employee_id : 'N/A'}</td>
                             <td>{assignment.employee_id ? assignment.employee_id.full_name : 'N/A'}</td>
